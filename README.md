@@ -17,15 +17,7 @@ This project is an automated attendance system that uses facial recognition tech
 - Webcam or camera to capture images
 - JavaFX SDK 20.0.1
 
-## Installation
 
-1. Clone the repository using the following command:
-    ```bash
-  git clone https://github.com/aadi1011/Face_Recognigation.git
-    ```
-3. Import the project into your IDE (Eclipse, IntelliJ, etc.)
-4. Download the OpenCV library and add it to the project's build path.
-5. Run the project.
 
 ## Usage
 
