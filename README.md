@@ -1,54 +1,114 @@
 
-## PROJECT OVERVIEW
+# Face_Recognition Project
 
-Face_Recognition is a Java-based facial recognition system that automates attendance tracking. It uses OpenCV for real-time face detection and recognition and logs attendance in a structured format. This project demonstrates practical application of computer vision and machine learning concepts in a real-world scenario.
+![Java](https://img.shields.io/badge/Language-Java-orange)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.5-blue)
+![MySQL](https://img.shields.io/badge/Database-MySQL-blue)
 
+---
 
-## KEY FEATURES
-* Auto Attendance system Using Real Time Face Recognition
-* Face Trainer
-* Face recognition using LBPH algorithm
-* Rectangle Shape Detection
-* Trained Faces Image Gallery View
-* Database integration
-* Persistent Storage for Trained Faces Image Using Database
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Motivation](#motivation)
+- [Key Features](#key-features)
+- [Technology Used](#technology-used)
+- [User Interface](#user-interface)
+- [User Guide](#user-guide)
+  - [Face Training](#face-training)
+  - [Face Recognition](#face-recognition)
+  - [View Attendance](#view-attendance)
+- [Database Setup](#database-setup)
+- [Tips](#tips)
+- [Known Limitations](#known-limitations)
+- [License](#license)
 
-## TECHNOLOGY USED
-* Core Java
-* opencv(via javaCV)
-* MySQL
-* Maven
-* Haar Cascade Classifier
-## USER INTERFACE
-<img src="target/classes/appLayout.jpg"  style="width: 700px;"/>
+---
 
+## Project Overview
 
+**Face_Recognition** is a Java-based facial recognition system designed to **automate attendance tracking**. It leverages **OpenCV via JavaCV** for real-time face detection and recognition and logs attendance in a structured format. This project demonstrates practical applications of computer vision and machine learning in real-world scenarios.
 
-## USER GUIDE
+---
 
- 1.FACE TRAINING
-* Click Train Faces.
-* Capture multiple images from webcam.
-* Images are stored in resources/trained_faces/ and saved in database.
+## Motivation
 
- 2.FACE RECOGNITION
-* Click Start Recognition.
-* Webcam detects faces in real-time.
-* Recognized faces are logged in attendance with timestamp.
+This project aims to provide a **simple and effective facial recognition system** that can run locally. Typical use cases include:
 
- 3.VIEW ATTENDENCE
-* Attendance records can be retrieved from database or GUI.
-   
+- Access control / authentication  
+- Attendance tracking for classrooms or offices  
+- Organizing personal media based on faces  
+- Learning and experimenting with face detection & recognition  
 
+---
 
-## Database Settings 
-* Open MySQL on XAMPP then Create a New Database & name it **ghostEye** 
-* Now import attached **face_bio.sql** to the  **ghostEye** Database
-* Or Create a New Schema(Table)
+## Key Features
+
+- Auto attendance system using **real-time face recognition**  
+- Face trainer for capturing multiple images per person  
+- Face recognition using **LBPH algorithm**  
+- Rectangle shape detection around faces  
+- Trained faces image gallery view  
+- Database integration for persistent storage  
+- Logs attendance with timestamps  
+
+---
+
+## Technology Used
+
+- Core Java  
+- OpenCV (via JavaCV)  
+- MySQL  
+- Maven  
+- Haar Cascade Classifier  
+
+---
+
+## User Interface
+
+<img src="target/classes/appLayout.jpg" alt="App Layout" style="width:700px; border:1px solid #ddd; border-radius:4px;" />
+
+---
+
+## User Guide
+
+### 1. Face Training
+- Click **Train Faces** in the application.  
+- Capture multiple images from the webcam (ideally 10+ images from different angles).  
+- Images are stored in `resources/trained_faces/` and saved in the database.  
+
+### 2. Face Recognition
+- Click **Start Recognition**.  
+- Webcam detects faces in real-time.  
+- Recognized faces are logged in attendance with timestamps.  
+
+### 3. View Attendance
+- Retrieve attendance records from the database or GUI.  
+
+---
+## TIPS
+
+- Capture 10+ images per person from different angles for best accuracy.
+
+- Clear the faces folder after training to remove test images.
+
+- Make sure database is correctly configured before running recognition.
+
+## Limitations
+
+- Faces not trained or unknown may produce incorrect recognition results.
+
+- Algorithm guesses the nearest match if no exact match is found.
+
+- Low-light, occlusions, or extreme angles reduce accuracy
+  
+## Database Setup
+
+1. Open MySQL on XAMPP and create a new database named **ghostEye**.  
+2. Import the provided `face_bio.sql` into the **ghostEye** database, or manually create the table:
+
 ```sql
-
 CREATE TABLE IF NOT EXISTS `face_bio` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `code` int(10) NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -57,48 +117,14 @@ CREATE TABLE IF NOT EXISTS `face_bio` (
   `section` varchar(20) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+ALTER TABLE `face_bio`
+ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `face_bio`
- ADD PRIMARY KEY (`id`);
- 
- ALTER TABLE `face_bio`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;...```
 
-```
+---
 
-* Now Open src/application/Database.java and provide your MySQL DB credintials
-```java
-package application;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
-class Database {
-	public int code;
-
-	public String fname;
-	public String Lname;
-	public int reg;
-	public int age;
-	public String sec;
-
-	public final String Database_name = "Your Database";
-	public final String Database_user = "Your Database user Name";
-	public final String Database_pass = "Your Database Password";
-
-	.
-	.
-	.
-```
-
-
-# Tips
-* When you going to train a new face try to capture at least 10 pictures of a single person in different angle.keep it in mind that the more number of training image in different angle and posture, the more accurate will be  face recognition.
-* After everything done ,kindly empty the **faces** folder.There is a test_face image.You have to delete it.
-
-# Please Note:
-Please Keep it in mind ,sometimes the face recognition algorithm provides wrong output if a person is not trained or unknown to the system.The reason behind this is that the face recognition algorithm guess the face with the nearest match.when it does not find any match ,the system pick any face with a nearest match.this is  why it sometimes provides wrong output.
 
 
 
