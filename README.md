@@ -20,7 +20,7 @@ Face_Recognition is a Java-based facial recognition system that automates attend
 * Maven
 * Haar Cascade Classifier
 ## USER INTERFACE
-<img src="./src/appLayout.jpg" alt="ExoVisix UI" style="width: 700px;"/>
+<img src="target/classes/appLayout.jpg"  style="width: 700px;"/>
 
 
 
