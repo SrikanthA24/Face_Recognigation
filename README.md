@@ -65,7 +65,7 @@ This project aims to provide a **simple and effective facial recognition system*
 
 ## User Interface
 
-<img src="target/classes/appLayout.jpg" alt="App Layout" style="width:700px; border:1px solid #ddd; border-radius:4px;" />
+<img src="src/appLayout.jpg" alt="App Layout" style="width:700px; border:1px solid #ddd; border-radius:4px;" />
 
 ---
 
